@@ -21,6 +21,7 @@ public class Client implements UserDetails {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String email;
     @JsonIgnore
     private String password;
