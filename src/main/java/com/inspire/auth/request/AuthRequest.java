@@ -20,10 +20,5 @@ public class AuthRequest {
     @NotNull(message = "password is required")
     @Size(min = 4, message = "Password must be at least 4 characters long")
     private String password;
-    @NotNull(message = "username is required")
-    @Size(min = 4, message = "username must be at least 4 characters long")
-    private String username;
-    @Pattern(regexp = "^07\\d{8}$", message = "Phone number must start with 07 and be followed by 8 digits")
-    @NotNull(message = "phone-number is required")
-    private String phoneNumber;
+
 }

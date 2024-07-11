@@ -1,12 +1,11 @@
 package com.inspire.auth.repository;
 
-import com.inspire.auth.model.UserApp;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import com.inspire.auth.model.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface UserRepository extends MongoRepository<UserApp,String> {
-    Optional<UserApp> findByEmail(String email);
-    Optional<UserApp> findByUname(String uname);
-    Optional<UserApp> findByPhoneNumber(String phoneNumber);
+public interface UserRepository extends JpaRepository<Client,Long> {
+    Optional<Client> findByEmail(String email);
+
 }

@@ -1,51 +1,40 @@
 package com.inspire.auth.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
 
+@Entity
 @Data
 @Builder
-@Document("Users")
 @AllArgsConstructor@NoArgsConstructor
-public class UserApp implements UserDetails {
-    @MongoId
-    private String id;
+public class Client implements UserDetails {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
     private String email;
-    private String uname;
     @JsonIgnore
     private String password;
-    @Builder.Default
-    private List<String> role=new ArrayList<>(Arrays.asList("ROLE_USER"));
-    @JsonIgnore
-    @Builder.Default
-    private Date createdDate=new Date();
 
-    public UserApp(String email, String password,String uname) {
+    public Client(String email, String password) {
         this.email = email;
         this.password = password;
-        this.uname = uname;
     }
 
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        var authority=new ArrayList<GrantedAuthority>();
-        for(String r:role){
-            authority.add(new SimpleGrantedAuthority(r));
-        }
-        return authority;
+        return Collections.emptyList();
     }
-
     @Override
     @JsonIgnore
     public String getPassword() {

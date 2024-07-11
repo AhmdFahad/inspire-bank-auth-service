@@ -1,6 +1,5 @@
 package com.inspire.auth.service;
 
-import com.aqarati.auth.exception.RequestMissingInformation;
 import com.inspire.auth.repository.UserRepository;
 import com.inspire.auth.request.AuthRequest;
 import com.inspire.auth.security.JwtTokenUtil;
