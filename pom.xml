@@ -144,18 +144,18 @@
 
     <profiles>
         <profile>
-            <id>local</id>
+            <id>dev</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <active>local</active>
+                <active>dev</active>
             </properties>
         </profile>
         <profile>
-            <id>dev</id>
+            <id>local</id>
             <properties>
-                <active>dev</active>
+                <active>local</active>
             </properties>
         </profile>
         <profile>
