@@ -11,22 +11,30 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
 
-@Entity
+@Entity(name = "bank_client_credentials")
 @Data
 @Builder
 @AllArgsConstructor@NoArgsConstructor
-public class Client implements UserDetails {
+public class ClientCredentials implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
+
     @JsonIgnore
+    @Column(name = "password", nullable = false)
     private String password;
 
-    public Client(String email, String password) {
+    @Column(name = "last_login_time")
+    private Date lastLoginTime;
+
+    @Column(name = "bank_client_id")
+    private Long bankClientId;
+
+    public ClientCredentials(String email, String password) {
         this.email = email;
         this.password = password;
     }

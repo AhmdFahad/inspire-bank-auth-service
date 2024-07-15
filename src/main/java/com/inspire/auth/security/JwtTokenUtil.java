@@ -1,7 +1,7 @@
 package com.inspire.auth.security;
 
 import com.inspire.auth.exception.InvalidJwtAuthenticationException;
-import com.inspire.auth.model.Client;
+import com.inspire.auth.model.ClientCredentials;
 import io.jsonwebtoken.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -27,10 +27,10 @@ public class JwtTokenUtil {
     @Value("${jwt.expiration}")
     private long validityInMilliseconds;
 
-    public String createToken(Client client) {
-        Claims claims = Jwts.claims().setSubject(client.getEmail());
-        claims.put("uid", client.getId());
-        if(client.getAuthorities().stream().anyMatch(authority -> authority.getAuthority().equals("ROLE_ADMIN"))){
+    public String createToken(ClientCredentials clientCredentials) {
+        Claims claims = Jwts.claims().setSubject(clientCredentials.getEmail());
+        claims.put("uid", clientCredentials.getBankClientId());
+        if(clientCredentials.getAuthorities().stream().anyMatch(authority -> authority.getAuthority().equals("ROLE_ADMIN"))){
             claims.put("role","admin");
         }
         Date now = new Date();

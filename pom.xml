@@ -9,16 +9,36 @@
         <version>3.2.1</version>
         <relativePath/>
     </parent>
+
     <artifactId>identityService</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>auth-service</name>
     <description>identity and authentication service</description>
+
+    <url/>
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>ahamdah</id>
+            <name>Ahmad Fahad</name>
+            <email>ahamdah@outlook.com</email>
+            <url>https://github.com/AhmdFahad</url>
+        </developer>
+    </developers>
+
     <properties>
         <java.version>21</java.version>
         <spring-security.version>6.1.4</spring-security.version>
         <spring-cloud.version>2023.0.0</spring-cloud.version>
         <jkube.generator.name>ahmd66699/inspire-bank-${project.name}:${project.version}</jkube.generator.name>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -57,7 +77,6 @@
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-jackson</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -95,8 +114,6 @@
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
-
-
     </dependencies>
 
     <dependencyManagement>
@@ -123,11 +140,10 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
-    <build>
 
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -138,7 +154,7 @@
                 <artifactId>kubernetes-maven-plugin</artifactId>
                 <version>1.16.2</version>
             </plugin>
-    </plugins>
+        </plugins>
         <finalName>identityService</finalName>
     </build>
 
@@ -165,6 +181,5 @@
             </properties>
         </profile>
     </profiles>
-
 
 </project>

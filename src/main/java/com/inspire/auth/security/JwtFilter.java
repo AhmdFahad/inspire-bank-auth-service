@@ -1,7 +1,7 @@
 package com.inspire.auth.security;
 
 import com.inspire.auth.repository.UserRepository;
-import com.inspire.auth.model.Client;
+import com.inspire.auth.model.ClientCredentials;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -41,7 +41,7 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
         // Get user identity and set it on the spring security context
-        Client user = userRepository.findByEmail(jwtTokenUtil.getEmail(token)).orElse(null);
+        ClientCredentials user = userRepository.findByEmail(jwtTokenUtil.getEmail(token)).orElse(null);
 
         UsernamePasswordAuthenticationToken authentication
                 = new UsernamePasswordAuthenticationToken
